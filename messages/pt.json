@@ -1,0 +1,308 @@
+{
+  "nav": {
+    "home": "Início",
+    "services": "Serviços",
+    "portfolio": "Portfólio",
+    "process": "Processo",
+    "testimonials": "Depoimentos",
+    "contact": "Contato",
+    "quote": "Solicitar Orçamento"
+  },
+  "hero": {
+    "tagline": "Transformando ideias em realidade digital",
+    "title": "Desenvolvemos <highlight>soluções digitais</highlight> que impulsionam negócios",
+    "subtitle": "Somos uma software house especializada em criar sistemas web, aplicativos e plataformas que resolvem problemas reais e geram resultados mensuráveis.",
+    "cta": {
+      "projects": "Ver Nossos Projetos",
+      "expert": "Falar com Especialista"
+    },
+    "stats": {
+      "projects": "Projetos Entregues",
+      "satisfaction": "Satisfação",
+      "roi": "ROI Médio",
+      "support": "Suporte"
+    }
+  },
+  "services": {
+    "title": "Nossos Serviços",
+    "subtitle": "Oferecemos soluções completas de tecnologia para impulsionar seu negócio",
+    "more": "Saiba mais",
+    "cta": {
+      "title": "Precisa de uma solução personalizada?",
+      "subtitle": "Conte-nos sobre seu projeto e vamos desenvolver a solução perfeita para suas necessidades.",
+      "button": "Falar com Especialista"
+    },
+    "web": {
+      "title": "Desenvolvimento Web",
+      "desc": "Criamos aplicações web modernas, responsivas e de alta performance usando as tecnologias mais avançadas do mercado.",
+      "features": "React/Next.js, Node.js/Python, APIs REST/GraphQL, Cloud AWS/Azure"
+    },
+    "mobile": {
+      "title": "Aplicativos Mobile",
+      "desc": "Desenvolvemos apps nativos e híbridos para iOS e Android com experiência fluida e integração total.",
+      "features": "React Native/Flutter, iOS Swift, Android Kotlin, Push Notifications"
+    },
+    "design": {
+      "title": "UX/UI Design",
+      "desc": "Criamos interfaces intuitivas e atraentes que proporcionam experiências memoráveis aos usuários.",
+      "features": "Pesquisa UX, Prototipação, Design Systems, Testes de Usabilidade"
+    },
+    "enterprise": {
+      "title": "Sistemas Empresariais",
+      "desc": "Desenvolvemos soluções corporativas personalizadas para otimizar e automatizar seus processos.",
+      "features": "ERP/CRM Custom, Automação de Processos, Business Intelligence, Integrações"
+    },
+    "ecommerce": {
+      "title": "E-commerce",
+      "desc": "Construímos lojas virtuais completas e escaláveis com toda gestão integrada.",
+      "features": "Plataformas VTEX/Shopify, Gateways de Pagamento, Gestão de Estoque, Analytics"
+    },
+    "consulting": {
+      "title": "Consultoria Tech",
+      "desc": "Orientamos sua empresa na adoção de tecnologias e melhores práticas de desenvolvimento.",
+      "features": "Arquitetura de Software, Code Review, DevOps, Migração Cloud"
+    }
+  },
+  "portfolio": {
+    "title": "Nossos",
+    "titleHighlight": "Projetos",
+    "subtitle": "Conheça alguns cases de sucesso onde transformamos ideias em soluções reais",
+    "filter": {
+      "all": "Todos",
+      "web": "Web Apps",
+      "mobile": "Mobile",
+      "ecommerce": "E-commerce",
+      "design": "UI/UX"
+    },
+    "cta": "Ver Portfólio Completo",
+    "ctaSubtitle": "+20 projetos entregues com excelência",
+    "demo": "Ver Demo",
+    "code": "Código",
+    "project1": {
+      "title": "Sistema de Gestão Empresarial",
+      "desc": "Plataforma completa para gestão de operações internas"
+    },
+    "project2": {
+      "title": "App de Delivery Gourmet",
+      "desc": "Aplicativo de delivery com geolocalização em tempo real"
+    },
+    "project3": {
+      "title": "Loja Virtual Premium",
+      "desc": "E-commerce com integração de pagamentos e logística"
+    },
+    "project4": {
+      "title": "Dashboard Analytics",
+      "desc": "Dashboard interativo para análise de dados em tempo real"
+    },
+    "project5": {
+      "title": "App Fitness Personalizado",
+      "desc": "Aplicativo de treinos e nutrição com IA"
+    },
+    "project6": {
+      "title": "Redesign Plataforma SaaS",
+      "desc": "Redesign completo de interface para melhor experiência"
+    }
+  },
+  "process": {
+    "title": "Nosso Processo de Desenvolvimento",
+    "subtitle": "Trabalhamos com metodologia ágil transparente para garantir qualidade, eficiência e alinhamento total com seus objetivos",
+    "step1": {
+      "title": "Descoberta & Planejamento",
+      "desc": "Entendemos seu negócio, objetivos e desafios para definir a melhor estratégia técnica."
+    },
+    "step2": {
+      "title": "Prototipagem & Design",
+      "desc": "Criamos wireframes e protótipos interativos para validar a experiência do usuário."
+    },
+    "step3": {
+      "title": "Desenvolvimento Ágil",
+      "desc": "Desenvolvemos em sprints com entregas contínuas e feedback constante."
+    },
+    "step4": {
+      "title": "Testes & Qualidade",
+      "desc": "Realizamos testes rigorosos para garantir performance, segurança e usabilidade."
+    },
+    "step5": {
+      "title": "Entrega & Suporte",
+      "desc": "Implementamos a solução e oferecemos suporte contínuo para evolução."
+    },
+    "metrics": {
+      "faster": "Mais rápido",
+      "cost": "Redução de custos",
+      "satisfaction": "Satisfação",
+      "support": "Suporte"
+    }
+  },
+  "testimonials": {
+    "badge": "Depoimentos",
+    "title": "O que nossos clientes",
+    "titleHighlight": "dizem",
+    "subtitle": "Construímos relacionamentos duradouros baseados em confiança, qualidade e resultados reais",
+    "cta": {
+      "text": "Junte-se a empresas que já transformaram seus negócios conosco",
+      "button": "Fazer um Orçamento"
+    },
+    "stats": {
+      "clients": "Clientes Satisfeitos",
+      "rating": "Avaliação Média",
+      "retention": "Taxa de Retenção",
+      "delivered": "Projetos Entregues"
+    },
+    "1": {
+      "content": "A Axyon transformou nossa ideia em uma plataforma incrível. O profissionalismo e a qualidade técnica superaram todas as expectativas. Hoje temos um produto que nossos clientes adoram!",
+      "name": "Carlos Mendes",
+      "role": "CEO",
+      "company": "TechStart Brasil"
+    },
+    "2": {
+      "content": "Nosso e-commerce cresceu 300% após o redesign. A equipe entendeu perfeitamente nosso público e criou uma experiência de compra excepcional. Recomendo de olhos fechados!",
+      "name": "Marina Silva",
+      "role": "Diretora de Marketing",
+      "company": "Loja Fashion"
+    },
+    "3": {
+      "content": "Precisávamos de um sistema complexo e escalável. A Axyon não só entregou com qualidade, mas também nos consultou sobre as melhores práticas. Parceria de verdade!",
+      "name": "Roberto Almeida",
+      "role": "CTO",
+      "company": "FinTech Solutions"
+    },
+    "4": {
+      "content": "O aplicativo ficou melhor do que imaginávamos. A comunicação foi impecável durante todo o projeto e o suporte pós-lançamento é exemplar. Equipe nota 10!",
+      "name": "Ana Paula Costa",
+      "role": "Fundadora",
+      "company": "App Saúde+"
+    },
+    "5": {
+      "content": "Automatizamos processos que antes levavam dias. O sistema desenvolvido trouxe eficiência e economia real. ROI positivo em menos de 6 meses!",
+      "name": "Felipe Santos",
+      "role": "Gerente de Projetos",
+      "company": "Indústria XYZ"
+    },
+    "6": {
+      "content": "A metodologia ágil e a transparência no desenvolvimento fizeram toda diferença. Conseguimos lançar no prazo e com qualidade excepcional. Parceiros ideais!",
+      "name": "Juliana Ribeiro",
+      "role": "Product Owner",
+      "company": "EdTech Inovação"
+    }
+  },
+  "contact": {
+    "title": "Vamos Conversar Sobre Seu Projeto",
+    "subtitle": "Conte-nos sua ideia e vamos desenvolver a solução perfeita para o seu negócio",
+    "form": {
+      "title": "Envie sua proposta",
+      "name": "Nome completo",
+      "namePlaceholder": "Seu nome",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "company": "Empresa",
+      "companyPlaceholder": "Nome da empresa",
+      "projectType": "Tipo de projeto",
+      "projectTypePlaceholder": "Selecione uma opção",
+      "message": "Mensagem",
+      "messagePlaceholder": "Descreva seu projeto, objetivos e necessidades...",
+      "messageHint": "caracteres (mínimo 20)",
+      "submit": "Enviar Mensagem",
+      "submitting": "Enviando...",
+      "required": "*",
+      "success": {
+        "title": "Mensagem Enviada!",
+        "message": "Recebemos sua mensagem e entraremos em contato em até 24 horas.",
+        "button": "Enviar nova mensagem"
+      },
+      "errors": {
+        "name": {
+          "required": "Nome é obrigatório",
+          "min": "Nome deve ter pelo menos 3 caracteres"
+        },
+        "email": {
+          "required": "Email é obrigatório",
+          "invalid": "Email inválido"
+        },
+        "projectType": {
+          "required": "Selecione um tipo de projeto"
+        },
+        "message": {
+          "required": "Mensagem é obrigatória",
+          "min": "Mensagem deve ter pelo menos 20 caracteres"
+        }
+      }
+    },
+    "projectTypes": {
+      "web": "Desenvolvimento Web",
+      "mobile": "Aplicativo Mobile",
+      "enterprise": "Sistema Empresarial",
+      "ecommerce": "E-commerce",
+      "redesign": "Redesign/UX",
+      "consulting": "Consultoria",
+      "other": "Outro"
+    },
+    "methods": {
+      "title": "Outras formas de contato",
+      "email": {
+        "title": "Email",
+        "action": "Envie uma mensagem"
+      },
+      "phone": {
+        "title": "Telefone",
+        "action": "Ligue para nós"
+      },
+      "office": {
+        "title": "Escritório",
+        "details": "São Paulo, SP - Brasil",
+        "action": "Agende uma visita"
+      }
+    },
+    "faq": {
+      "title": "Perguntas frequentes",
+      "1": {
+        "question": "Qual o prazo médio para um projeto?",
+        "answer": "Variável conforme complexidade, mas estimamos 4-12 semanas."
+      },
+      "2": {
+        "question": "Trabalham com manutenção pós-lançamento?",
+        "answer": "Sim, oferecemos planos de suporte e evolução contínua."
+      },
+      "3": {
+        "question": "Posso ver exemplos de projetos anteriores?",
+        "answer": "Claro! Temos um portfólio com cases de sucesso."
+      }
+    }
+  },
+  "cta": {
+    "title": "Tem um projeto em mente?",
+    "subtitle": "Vamos transformar sua ideia em realidade!",
+    "button": "Solicitar Orçamento",
+    "response": "Resposta em até 24 horas ⚡",
+    "tooltip": "Fale Conosco"
+  },
+  "footer": {
+    "description": "Transformamos ideias em soluções digitais que impulsionam negócios. Desenvolvimento de software sob medida com tecnologia de ponta.",
+    "services": {
+      "title": "Serviços",
+      "web": "Desenvolvimento Web",
+      "mobile": "Aplicativos Mobile",
+      "design": "UX/UI Design",
+      "consulting": "Consultoria Tech"
+    },
+    "company": {
+      "title": "Empresa",
+      "about": "Sobre nós",
+      "portfolio": "Portfólio",
+      "careers": "Carreiras",
+      "blog": "Blog"
+    },
+    "legal": {
+      "title": "Legal",
+      "terms": "Termos de uso",
+      "privacy": "Política de privacidade",
+      "cookies": "Cookies"
+    },
+    "newsletter": {
+      "title": "Fique por dentro das novidades",
+      "subtitle": "Receba insights sobre tecnologia e transformação digital.",
+      "placeholder": "Seu email",
+      "button": "Inscrever"
+    },
+    "copyright": "© {{year}} Axyon Software House. Todos os direitos reservados."
+  }
+}

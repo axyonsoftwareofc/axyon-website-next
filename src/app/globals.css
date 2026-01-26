@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+/* ===========================================
+   ⚠️ CRÍTICO: Dark Mode para Tailwind v4
+   =========================================== */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===========================================
+   CSS VARIABLES - Cores do Axyon
+   =========================================== */
+
+:root {
+  /* Light Mode */
+  --color-light-bg: #F8FAFC;
+  --color-light-surface: #FFFFFF;
+  --color-light-text: #1E293B;
+  --color-light-muted: #64748B;
+
+  /* Dark Mode - Axyon Brand Colors */
+  --color-primary: #0A192F;
+  --color-primary-light: #112240;
+  --color-primary-lighter: #1E3A5F;
+  --color-secondary: #64FFDA;
+  --color-accent: #8892B0;
+  --color-muted: #A8B2D1;
+  --color-light: #CCD6F6;
+
+  /* Accent Colors */
+  --color-cyan: #64FFDA;
+  --color-blue: #3B82F6;
+}
+
+/* ===========================================
+   BASE STYLES - Previne Flash de Tema
+   =========================================== */
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F8FAFC;
+}
+
+html.dark {
+  background-color: #0A192F;
+}
+
+body {
+  background-color: #F8FAFC;
+  color: #1E293B;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+html.dark body {
+  background-color: #0A192F;
+  color: #CCD6F6;
+}
+
+/* ===========================================
+   CONTAINER - Layout centralizado
+   =========================================== */
+
+.container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+/* ===========================================
+   SCROLLBAR CUSTOMIZADA
+   =========================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0A192F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1E3A5F;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #2d4a6f;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+html.dark * {
+  scrollbar-color: #1E3A5F #0A192F;
+}
+
+/* ===========================================
+   SELEÇÃO DE TEXTO
+   =========================================== */
+
+::selection {
+  background-color: #3B82F6;
+  color: white;
+}
+
+html.dark ::selection {
+  background-color: #64FFDA;
+  color: #0A192F;
+}
+
+/* ===========================================
+   FOCUS VISIBLE (Acessibilidade)
+   =========================================== */
+
+:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+html.dark :focus-visible {
+  outline-color: #64FFDA;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ===========================================
+   SUPORTE A REDUCED MOTION
+   =========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===========================================
+   GRADIENT TEXT
+   =========================================== */
+
+.gradient-text {
+  background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html.dark .gradient-text {
+  background: linear-gradient(135deg, #64FFDA 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===========================================
+   GLOW EFFECTS
+   =========================================== */
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* ===========================================
+   SECTION STYLES
+   =========================================== */
+
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===========================================
+   RESET EXTRAS
+   =========================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#root, #__next {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+/* ===========================================
+   CARD UTILITIES
+   =========================================== */
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+html.dark .card {
+  background-color: #112240;
+  border-color: #1E3A5F;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+}
+
+html.dark .card:hover {
+  box-shadow: 0 10px 40px -10px rgba(100, 255, 218, 0.1);
+}
+
+/* ===========================================
+   BUTTON UTILITIES
+   =========================================== */
+
+.btn-primary {
+  background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+html.dark .btn-primary {
+  background: linear-gradient(135deg, #64FFDA 0%, #3B82F6 100%);
+  color: #0A192F;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #3B82F6;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid #3B82F6;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #3B82F6;
+  color: white;
+}
+
+html.dark .btn-secondary {
+  color: #64FFDA;
+  border-color: #64FFDA;
+}
+
+html.dark .btn-secondary:hover {
+  background: #64FFDA;
+  color: #0A192F;
+}
