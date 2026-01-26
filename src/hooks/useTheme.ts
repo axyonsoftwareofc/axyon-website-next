@@ -7,7 +7,7 @@
 import { useTheme as useNextTheme } from 'next-themes';
 
 export const useTheme = () => {
-    const { theme, setTheme, resolvedTheme, systemTheme } = useNextTheme();
+    const { setTheme, resolvedTheme, systemTheme } = useNextTheme();
 
     // Função toggle para compatibilidade com código existente
     const toggleTheme = () => {

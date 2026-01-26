@@ -1,17 +1,20 @@
 // src/components/ThemeToggle.tsx
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 const ThemeToggle = () => {
-    const { theme, setTheme, resolvedTheme } = useTheme();
+    const { setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
-    // Evita hydration mismatch
+    // Evita hydration mismatch - usando useLayoutEffect pattern
     useEffect(() => {
-        setMounted(true);
+        const timer = requestAnimationFrame(() => {
+            setMounted(true);
+        });
+        return () => cancelAnimationFrame(timer);
     }, []);
 
     // Não renderiza nada até montar (evita flash)

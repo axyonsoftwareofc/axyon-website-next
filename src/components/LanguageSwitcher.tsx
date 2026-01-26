@@ -2,13 +2,13 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Globe, ChevronDown } from 'lucide-react';
 
 const LanguageSwitcher = () => {
     const locale = useLocale();
     const [isOpen, setIsOpen] = useState(false);
+    const [pendingLocale, setPendingLocale] = useState<string | null>(null);
 
     const languages = [
         { code: 'pt', name: 'Português', flag: '🇧🇷' },
@@ -18,9 +18,16 @@ const LanguageSwitcher = () => {
 
     const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
 
+    // useEffect para modificar o cookie quando pendingLocale muda
+    useEffect(() => {
+        if (pendingLocale && typeof window !== 'undefined') {
+            document.cookie = `NEXT_LOCALE=${pendingLocale}; path=/; max-age=31536000`;
+            window.location.reload();
+        }
+    }, [pendingLocale]);
+
     const changeLanguage = (newLocale: string) => {
-        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
-        window.location.reload();
+        setPendingLocale(newLocale);
     };
 
     return (
