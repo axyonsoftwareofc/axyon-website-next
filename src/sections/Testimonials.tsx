@@ -75,47 +75,44 @@ const Testimonials = () => {
     ];
 
     return (
-        <section id="testimonials" className="py-20 md:py-32 bg-white dark:bg-gray-900">
+        <section id="testimonials" className="py-20 md:py-32 bg-white dark:bg-[#0A192F]">
             <div className="container mx-auto px-4 sm:px-6">
                 <motion.div
                     initial="initial"
                     whileInView="animate"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-50px" }}
                     variants={staggerContainer}
                 >
                     {/* Cabeçalho */}
                     <div className="text-center mb-16 md:mb-20">
                         <motion.div
                             variants={fadeInUp}
-                            className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 dark:bg-gray-800 dark:text-cyan-400 rounded-full px-5 py-2.5 mb-6 border border-blue-100 dark:border-cyan-400/20"
+                            className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 dark:bg-[#1E3A5F]/30 dark:text-[#64FFDA] rounded-full px-5 py-2.5 mb-6 border border-blue-100 dark:border-[#64FFDA]/20"
                         >
                             <Star className="w-4 h-4 fill-current" />
                             <span className="text-sm font-medium">{t('testimonials.badge')}</span>
                         </motion.div>
 
-                        <motion.h2 variants={fadeInUp} className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100">
-                            {t('testimonials.title')} <span className="text-blue-600 dark:text-cyan-400">{t('testimonials.titleHighlight')}</span>
+                        <motion.h2 variants={fadeInUp} className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#CCD6F6]">
+                            {t('testimonials.title')} <span className="text-blue-600 dark:text-[#64FFDA]">{t('testimonials.titleHighlight')}</span>
                         </motion.h2>
 
-                        <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                        <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-700 dark:text-[#8892B0] max-w-2xl mx-auto">
                             {t('testimonials.subtitle')}
                         </motion.p>
                     </div>
 
                     {/* Grid de Depoimentos */}
-                    <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 md:mb-20"
-                        variants={staggerContainer}
-                    >
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 md:mb-20">
                         {testimonials.map((testimonial) => (
                             <motion.div
                                 key={testimonial.id}
                                 variants={fadeInUp}
-                                className="group relative bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-cyan-400 transition-all duration-300 hover:shadow-lg"
+                                className="group relative bg-gray-50 dark:bg-[#112240] rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-[#1E3A5F] hover:border-blue-400 dark:hover:border-[#64FFDA] transition-all duration-300 hover:shadow-lg dark:hover:shadow-[#64FFDA]/5"
                             >
                                 {/* Quote Icon */}
-                                <div className="absolute top-6 right-6 opacity-5 dark:opacity-5">
-                                    <Quote className="w-16 h-16 text-blue-600 dark:text-cyan-400" />
+                                <div className="absolute top-6 right-6 opacity-10">
+                                    <Quote className="w-16 h-16 text-blue-600 dark:text-[#64FFDA]" />
                                 </div>
 
                                 {/* Rating */}
@@ -129,34 +126,34 @@ const Testimonials = () => {
                                 </div>
 
                                 {/* Content */}
-                                <p className="text-gray-700 dark:text-gray-300 mb-6 relative z-10 leading-relaxed text-sm md:text-base">
+                                <p className="text-gray-700 dark:text-[#A8B2D1] mb-6 relative z-10 leading-relaxed text-sm md:text-base">
                                     &ldquo;{t(testimonial.contentKey)}&rdquo;
                                 </p>
 
                                 {/* Author */}
-                                <div className="flex items-center gap-4 border-t border-gray-200 dark:border-gray-700 pt-6">
+                                <div className="flex items-center gap-4 border-t border-gray-200 dark:border-[#1E3A5F] pt-6">
                                     <Image
                                         src={testimonial.avatar}
                                         alt={t(testimonial.nameKey)}
                                         width={56}
                                         height={56}
-                                        className="rounded-full border-2 border-blue-200 dark:border-cyan-400/30 group-hover:border-blue-400 dark:group-hover:border-cyan-400 transition-colors duration-300"
+                                        className="rounded-full border-2 border-blue-200 dark:border-[#64FFDA]/30 group-hover:border-blue-400 dark:group-hover:border-[#64FFDA] transition-colors duration-300"
                                     />
                                     <div>
-                                        <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                                        <h4 className="font-semibold text-gray-900 dark:text-[#CCD6F6]">
                                             {t(testimonial.nameKey)}
                                         </h4>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                                        <p className="text-sm text-gray-600 dark:text-[#8892B0]">
                                             {t(testimonial.roleKey)}
                                         </p>
-                                        <p className="text-xs text-blue-600 dark:text-cyan-400 font-medium">
+                                        <p className="text-xs text-blue-600 dark:text-[#64FFDA] font-medium">
                                             {t(testimonial.companyKey)}
                                         </p>
                                     </div>
                                 </div>
                             </motion.div>
                         ))}
-                    </motion.div>
+                    </div>
 
                     {/* Estatísticas */}
                     <motion.div
@@ -166,12 +163,12 @@ const Testimonials = () => {
                         {stats.map((stat, index) => (
                             <div
                                 key={index}
-                                className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-blue-100 dark:border-gray-700"
+                                className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#112240] dark:to-[#1E3A5F] rounded-xl border border-blue-100 dark:border-[#1E3A5F]"
                             >
-                                <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-cyan-400 mb-2">
+                                <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-[#64FFDA] mb-2">
                                     {stat.value}
                                 </div>
-                                <div className="text-sm md:text-base text-gray-700 dark:text-gray-400">
+                                <div className="text-sm md:text-base text-gray-700 dark:text-[#8892B0]">
                                     {t(stat.labelKey)}
                                 </div>
                             </div>
@@ -180,10 +177,10 @@ const Testimonials = () => {
 
                     {/* CTA */}
                     <motion.div variants={fadeInUp} className="text-center">
-                        <p className="text-gray-700 dark:text-gray-400 mb-6 text-lg">
+                        <p className="text-gray-700 dark:text-[#8892B0] mb-6 text-lg">
                             {t('testimonials.cta.text')}
                         </p>
-                        <button className="bg-blue-600 dark:bg-cyan-400 text-white dark:text-gray-900 px-8 py-3.5 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-cyan-300 transition-all">
+                        <button className="bg-blue-600 dark:bg-[#64FFDA] text-white dark:text-[#0A192F] px-8 py-3.5 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-[#52e0c4] transition-all">
                             {t('testimonials.cta.button')}
                         </button>
                     </motion.div>
