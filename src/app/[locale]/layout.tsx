@@ -1,15 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "../globals.css";
 import { Providers } from "../providers";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
+import { Inter } from "next/font/google";
+
 const inter = Inter({
     subsets: ["latin"],
     display: "swap",
     variable: "--font-inter",
+    preload: true,
+    fallback: ['system-ui', 'arial'],
 });
 
 export const viewport: Viewport = {

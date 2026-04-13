@@ -1,14 +1,13 @@
-import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
 import SectionLoader from '@/components/SectionLoader';
 
-// Dynamic imports SEM ssr: false (Server Components podem fazer SSR)
-const Hero = dynamic(() => import('@/sections/Hero'), {
-    loading: () => <SectionLoader />,
-});
+// Hero NÃO usa dynamic (aparece imediatamente)
+import Hero from '@/sections/Hero';
+import dynamic from "next/dynamic";
 
+// Apenas seções ABAIXO DA DOBRA usam dynamic
 const Services = dynamic(() => import('@/sections/Services'), {
     loading: () => <SectionLoader />,
 });
@@ -34,7 +33,7 @@ export default function Home() {
         <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-1">
-                <Hero />
+                <Hero /> {/* ← SEM LAZY LOAD */}
                 <Services />
                 <Portfolio />
                 <Process />

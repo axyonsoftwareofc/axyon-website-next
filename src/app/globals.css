@@ -309,3 +309,19 @@ html.dark .btn-secondary:hover {
   background: #64FFDA;
   color: #0A192F;
 }
+
+/* Otimizar animações */
+section {
+  position: relative;
+  overflow: hidden;
+  will-change: transform, opacity; /* ← Adicione */
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  will-change: transform; /* ← Adicione */
+}
