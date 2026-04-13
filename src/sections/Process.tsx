@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Search, Pencil, Code, TestTube, Rocket } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { fadeInUp, staggerContainer } from '@/utils/animations';
+import { fadeInUp, staggerContainer, getInitialVariant } from '@/utils/animations';
 
 const Process = () => {
     const t = useTranslations();
@@ -58,9 +58,9 @@ const Process = () => {
         <section id="process" className="py-20 md:py-32 bg-gray-50 dark:bg-[#112240]">
             <div className="container mx-auto px-4 sm:px-6">
                 <motion.div
-                    initial="initial"
+                    initial={false}
                     whileInView="animate"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, amount: 0.2 }}
                     variants={staggerContainer}
                 >
                     {/* Cabeçalho */}

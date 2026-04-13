@@ -12,7 +12,7 @@ import {
     CheckCircle
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { fadeInUp, staggerContainer } from '@/utils/animations';
+import { fadeInUp, staggerContainer, getInitialVariant } from '@/utils/animations';
 
 const Services = () => {
     const t = useTranslations();
@@ -72,9 +72,9 @@ const Services = () => {
         <section id="services" className="py-20 md:py-32 bg-white dark:bg-[#0A192F]">
             <div className="container">
                 <motion.div
-                    initial="initial"
+                    initial={false}
                     whileInView="animate"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, amount: 0.2 }}
                     variants={staggerContainer}
                 >
                     {/* Cabeçalho */}

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Eye, ChevronRight, Filter } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { fadeInUp, staggerContainer } from '@/utils/animations';
+import { fadeInUp, staggerContainer, getInitialVariant } from '@/utils/animations';
 
 const Portfolio = () => {
     const t = useTranslations();
@@ -89,9 +89,9 @@ const Portfolio = () => {
         <section id="portfolio" className="py-20 md:py-32 bg-gray-50 dark:bg-[#112240]">
             <div className="container mx-auto px-4 sm:px-6">
                 <motion.div
-                    initial="initial"
+                    initial={false}
                     whileInView="animate"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, amount: 0.2 }}
                     variants={staggerContainer}
                 >
                     {/* Cabeçalho */}

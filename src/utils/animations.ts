@@ -121,3 +121,15 @@ export const hoverScale = {
 export const tapScale = {
     scale: 0.98,
 };
+
+// Helper para detectar se é primeira renderização
+export const getInitialVariant = () => {
+    // Em SSR, não aplicar estado inicial de animação
+    if (typeof window === 'undefined') {
+        return 'animate'; // Já renderiza no estado final
+    }
+
+    // Em CSR, aplicar animação apenas se usuário permite
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    return prefersReducedMotion ? 'animate' : 'initial';
+};

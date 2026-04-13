@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { fadeInUp, staggerContainer } from '@/utils/animations';
+import { fadeInUp, staggerContainer, getInitialVariant } from '@/utils/animations';
 
 const Testimonials = () => {
     const t = useTranslations();
@@ -78,9 +78,9 @@ const Testimonials = () => {
         <section id="testimonials" className="py-20 md:py-32 bg-white dark:bg-[#0A192F]">
             <div className="container mx-auto px-4 sm:px-6">
                 <motion.div
-                    initial="initial"
+                    initial={false}  // ← NÃO anima no SSR
                     whileInView="animate"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, amount: 0.2 }}
                     variants={staggerContainer}
                 >
                     {/* Cabeçalho */}

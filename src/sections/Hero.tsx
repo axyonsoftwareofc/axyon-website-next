@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { fadeInUp, staggerContainer } from '@/utils/animations';
+import { fadeInUp, staggerContainer, getInitialVariant } from '@/utils/animations';
 
 const Hero = () => {
     const t = useTranslations();
@@ -27,8 +27,9 @@ const Hero = () => {
             <div className="container">
                 <motion.div
                     className="max-w-4xl mx-auto text-center"
-                    initial="initial"
-                    animate="animate"
+                    initial={false}
+                    whileInView="animate"
+                    viewport={{ once: true, amount: 0.2 }}
                     variants={staggerContainer}
                 >
                     {/* Badge */}
