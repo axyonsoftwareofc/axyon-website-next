@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
 import SectionLoader from '@/components/SectionLoader';
 
+// Dynamic imports SEM ssr: false (Server Components podem fazer SSR)
 const Hero = dynamic(() => import('@/sections/Hero'), {
     loading: () => <SectionLoader />,
 });

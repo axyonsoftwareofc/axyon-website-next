@@ -1,0 +1,21 @@
+{
+  "name": "Axyon Software House",
+  "short_name": "Axyon",
+  "description": "Desenvolvimento de Software e Soluções Digitais",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A192F",
+  "theme_color": "#64FFDA",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/logo-axyon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,14 +1,16 @@
-// src/components/LanguageSwitcher.tsx
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import { useState, useTransition } from 'react';
 import { Globe, ChevronDown } from 'lucide-react';
 
 const LanguageSwitcher = () => {
     const locale = useLocale();
+    const router = useRouter();
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
-    const [pendingLocale, setPendingLocale] = useState<string | null>(null);
+    const [isPending, startTransition] = useTransition();
 
     const languages = [
         { code: 'pt', name: 'Português', flag: '🇧🇷' },
@@ -18,23 +20,30 @@ const LanguageSwitcher = () => {
 
     const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
 
-    // useEffect para modificar o cookie quando pendingLocale muda
-    useEffect(() => {
-        if (pendingLocale && typeof window !== 'undefined') {
-            document.cookie = `NEXT_LOCALE=${pendingLocale}; path=/; max-age=31536000`;
-            window.location.reload();
-        }
-    }, [pendingLocale]);
-
     const changeLanguage = (newLocale: string) => {
-        setPendingLocale(newLocale);
+        if (newLocale === locale) return;
+
+        startTransition(() => {
+            // Define o cookie
+            document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+
+            // Troca a URL (/pt/... → /en/...)
+            const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
+
+            // Navega para a nova rota
+            router.push(newPathname);
+            router.refresh();
+        });
+
+        setIsOpen(false);
     };
 
     return (
         <div className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors group"
+                disabled={isPending}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors group disabled:opacity-50"
                 aria-label="Selecionar idioma"
             >
                 <Globe className="w-5 h-5 text-gray-600 dark:text-gray-300" />
@@ -54,9 +63,10 @@ const LanguageSwitcher = () => {
                             <button
                                 key={language.code}
                                 onClick={() => changeLanguage(language.code)}
-                                className={`w-full px-4 py-3 text-left flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+                                disabled={isPending || language.code === locale}
+                                className={`w-full px-4 py-3 text-left flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 ${
                                     locale === language.code
-                                        ? 'text-blue-600 dark:text-cyan-400 font-semibold'
+                                        ? 'text-blue-600 dark:text-cyan-400 font-semibold bg-blue-50 dark:bg-gray-700/50'
                                         : 'text-gray-700 dark:text-gray-300'
                                 }`}
                             >
@@ -68,7 +78,7 @@ const LanguageSwitcher = () => {
                                     </div>
                                 </div>
                                 {locale === language.code && (
-                                    <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-cyan-400" />
+                                    <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-cyan-400 animate-pulse" />
                                 )}
                             </button>
                         ))}
