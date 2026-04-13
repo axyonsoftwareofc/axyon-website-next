@@ -1,10 +1,11 @@
+// src/sections/Process.tsx
 'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Search, Pencil, Code, TestTube, Rocket } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { fadeInUp, staggerContainer, getInitialVariant } from '@/utils/animations';
+import { fadeInUp, staggerContainer } from '@/utils/animations';
 
 const Process = () => {
     const t = useTranslations();
@@ -15,35 +16,30 @@ const Process = () => {
             titleKey: 'process.step1.title',
             descKey: 'process.step1.desc',
             icon: <Search className="w-6 h-6" />,
-            color: 'from-blue-500 to-cyan-400'
         },
         {
             number: '02',
             titleKey: 'process.step2.title',
             descKey: 'process.step2.desc',
             icon: <Pencil className="w-6 h-6" />,
-            color: 'from-purple-500 to-pink-400'
         },
         {
             number: '03',
             titleKey: 'process.step3.title',
             descKey: 'process.step3.desc',
             icon: <Code className="w-6 h-6" />,
-            color: 'from-green-500 to-emerald-400'
         },
         {
             number: '04',
             titleKey: 'process.step4.title',
             descKey: 'process.step4.desc',
             icon: <TestTube className="w-6 h-6" />,
-            color: 'from-orange-500 to-yellow-400'
         },
         {
             number: '05',
             titleKey: 'process.step5.title',
             descKey: 'process.step5.desc',
             icon: <Rocket className="w-6 h-6" />,
-            color: 'from-red-500 to-rose-400'
         }
     ];
 
@@ -55,7 +51,7 @@ const Process = () => {
     ];
 
     return (
-        <section id="process" className="py-20 md:py-32 bg-gray-50 dark:bg-[#112240]">
+        <section id="process" className="py-20 md:py-32" style={{ backgroundColor: 'var(--surface-2)' }}>
             <div className="container mx-auto px-4 sm:px-6">
                 <motion.div
                     initial={false}
@@ -65,18 +61,23 @@ const Process = () => {
                 >
                     {/* Cabeçalho */}
                     <div className="text-center mb-16 md:mb-20">
-                        <motion.h2 variants={fadeInUp} className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#CCD6F6]">
+                        <motion.h2 variants={fadeInUp} className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold" style={{ color: 'var(--text-strong)' }}>
                             {t('process.title')}
                         </motion.h2>
-                        <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-700 dark:text-[#8892B0] max-w-2xl mx-auto">
+                        <motion.p variants={fadeInUp} className="text-lg md:text-xl max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
                             {t('process.subtitle')}
                         </motion.p>
                     </div>
 
                     {/* Linha do tempo - Desktop */}
                     <motion.div className="hidden lg:block relative" variants={fadeInUp}>
-                        {/* Linha conectora */}
-                        <div className="absolute left-0 right-0 top-14 h-0.5 bg-gradient-to-r from-[#64FFDA]/30 via-[#64FFDA]/50 to-[#64FFDA]/30"></div>
+                        {/* Linha conectora AZUL→CIANO */}
+                        <div
+                            className="absolute left-0 right-0 top-14 h-0.5"
+                            style={{
+                                background: 'linear-gradient(to right, color-mix(in srgb, var(--primary) 30%, transparent), var(--primary), color-mix(in srgb, var(--accent) 30%, transparent))'
+                            }}
+                        ></div>
 
                         <div className="flex justify-between">
                             {steps.map((step, index) => (
@@ -84,11 +85,19 @@ const Process = () => {
                                     key={index}
                                     className="relative flex flex-col items-center w-56"
                                 >
-                                    {/* Número e Ícone */}
-                                    <div className={`w-28 h-28 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center mb-6 z-10 shadow-lg`}>
-                                        <div className="w-24 h-24 bg-gray-900 dark:bg-[#0A192F] rounded-full flex flex-col items-center justify-center">
-                                            <span className="text-2xl font-bold text-white dark:text-[#CCD6F6]">{step.number}</span>
-                                            <div className="text-white dark:text-[#64FFDA] mt-1">
+                                    {/* Número e Ícone - GRADIENTE AZUL→CIANO */}
+                                    <div
+                                        className="w-28 h-28 rounded-full flex items-center justify-center mb-6 z-10 shadow-lg"
+                                        style={{
+                                            background: 'var(--gradient)'
+                                        }}
+                                    >
+                                        <div
+                                            className="w-24 h-24 rounded-full flex flex-col items-center justify-center"
+                                            style={{ backgroundColor: 'var(--bg)' }}
+                                        >
+                                            <span className="text-2xl font-bold" style={{ color: 'var(--text-strong)' }}>{step.number}</span>
+                                            <div className="mt-1" style={{ color: 'var(--primary)' }}>
                                                 {step.icon}
                                             </div>
                                         </div>
@@ -96,10 +105,10 @@ const Process = () => {
 
                                     {/* Conteúdo */}
                                     <div className="text-center">
-                                        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-[#CCD6F6]">
+                                        <h3 className="text-xl font-semibold mb-3" style={{ color: 'var(--text-strong)' }}>
                                             {t(step.titleKey)}
                                         </h3>
-                                        <p className="text-gray-700 dark:text-[#8892B0] text-sm leading-relaxed">
+                                        <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
                                             {t(step.descKey)}
                                         </p>
                                     </div>
@@ -117,18 +126,26 @@ const Process = () => {
                                 variants={fadeInUp}
                             >
                                 {/* Número e Ícone */}
-                                <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${step.color} flex-shrink-0 flex items-center justify-center shadow-lg`}>
-                                    <div className="w-16 h-16 bg-gray-900 dark:bg-[#0A192F] rounded-full flex flex-col items-center justify-center">
-                                        <span className="text-lg font-bold text-white dark:text-[#CCD6F6]">{step.number}</span>
+                                <div
+                                    className="w-20 h-20 rounded-full flex-shrink-0 flex items-center justify-center shadow-lg"
+                                    style={{
+                                        background: 'var(--gradient)'
+                                    }}
+                                >
+                                    <div
+                                        className="w-16 h-16 rounded-full flex flex-col items-center justify-center"
+                                        style={{ backgroundColor: 'var(--bg)' }}
+                                    >
+                                        <span className="text-lg font-bold" style={{ color: 'var(--text-strong)' }}>{step.number}</span>
                                     </div>
                                 </div>
 
                                 {/* Conteúdo */}
                                 <div className="pt-2">
-                                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-[#CCD6F6]">
+                                    <h3 className="text-lg md:text-xl font-semibold mb-2" style={{ color: 'var(--text-strong)' }}>
                                         {t(step.titleKey)}
                                     </h3>
-                                    <p className="text-gray-700 dark:text-[#8892B0] text-sm md:text-base leading-relaxed">
+                                    <p className="text-sm md:text-base leading-relaxed" style={{ color: 'var(--muted)' }}>
                                         {t(step.descKey)}
                                     </p>
                                 </div>
@@ -145,12 +162,16 @@ const Process = () => {
                             {metrics.map((metric, index) => (
                                 <div
                                     key={index}
-                                    className="text-center p-6 bg-white dark:bg-[#0A192F] rounded-xl border border-gray-200 dark:border-[#1E3A5F] hover:border-blue-400 dark:hover:border-[#64FFDA] transition-colors duration-300"
+                                    style={{
+                                        backgroundColor: 'var(--surface)',
+                                        borderColor: 'var(--border)'
+                                    }}
+                                    className="text-center p-6 rounded-xl border hover:border-primary transition-colors duration-300"
                                 >
-                                    <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-[#64FFDA] mb-2">
+                                    <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: 'var(--primary)' }}>
                                         {metric.value}
                                     </div>
-                                    <div className="text-sm md:text-base text-gray-700 dark:text-[#8892B0]">
+                                    <div className="text-sm md:text-base" style={{ color: 'var(--muted)' }}>
                                         {t(metric.labelKey)}
                                     </div>
                                 </div>

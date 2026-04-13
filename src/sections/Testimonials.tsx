@@ -1,3 +1,4 @@
+// src/sections/Testimonials.tsx
 'use client';
 
 import React from 'react';
@@ -5,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { fadeInUp, staggerContainer, getInitialVariant } from '@/utils/animations';
+import { fadeInUp, staggerContainer } from '@/utils/animations';
 
 const Testimonials = () => {
     const t = useTranslations();
@@ -75,10 +76,10 @@ const Testimonials = () => {
     ];
 
     return (
-        <section id="testimonials" className="py-20 md:py-32 bg-white dark:bg-[#0A192F]">
+        <section id="testimonials" className="py-20 md:py-32" style={{ backgroundColor: 'var(--bg)' }}>
             <div className="container mx-auto px-4 sm:px-6">
                 <motion.div
-                    initial={false}  // ← NÃO anima no SSR
+                    initial={false}
                     whileInView="animate"
                     viewport={{ once: true, amount: 0.2 }}
                     variants={staggerContainer}
@@ -87,17 +88,22 @@ const Testimonials = () => {
                     <div className="text-center mb-16 md:mb-20">
                         <motion.div
                             variants={fadeInUp}
-                            className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 dark:bg-[#1E3A5F]/30 dark:text-[#64FFDA] rounded-full px-5 py-2.5 mb-6 border border-blue-100 dark:border-[#64FFDA]/20"
+                            style={{
+                                backgroundColor: 'color-mix(in srgb, var(--primary) 10%, transparent)',
+                                color: 'var(--primary)',
+                                borderColor: 'color-mix(in srgb, var(--primary) 20%, transparent)'
+                            }}
+                            className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 mb-6 border"
                         >
                             <Star className="w-4 h-4 fill-current" />
                             <span className="text-sm font-medium">{t('testimonials.badge')}</span>
                         </motion.div>
 
-                        <motion.h2 variants={fadeInUp} className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#CCD6F6]">
-                            {t('testimonials.title')} <span className="text-blue-600 dark:text-[#64FFDA]">{t('testimonials.titleHighlight')}</span>
+                        <motion.h2 variants={fadeInUp} className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold" style={{ color: 'var(--text-strong)' }}>
+                            {t('testimonials.title')} <span className="gradient-text">{t('testimonials.titleHighlight')}</span>
                         </motion.h2>
 
-                        <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-700 dark:text-[#8892B0] max-w-2xl mx-auto">
+                        <motion.p variants={fadeInUp} className="text-lg md:text-xl max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
                             {t('testimonials.subtitle')}
                         </motion.p>
                     </div>
@@ -108,11 +114,15 @@ const Testimonials = () => {
                             <motion.div
                                 key={testimonial.id}
                                 variants={fadeInUp}
-                                className="group relative bg-gray-50 dark:bg-[#112240] rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-[#1E3A5F] hover:border-blue-400 dark:hover:border-[#64FFDA] transition-all duration-300 hover:shadow-lg dark:hover:shadow-[#64FFDA]/5"
+                                style={{
+                                    backgroundColor: 'var(--surface)',
+                                    borderColor: 'var(--border)'
+                                }}
+                                className="group relative rounded-2xl p-6 md:p-8 border hover:border-primary transition-all duration-300 hover:shadow-lg"
                             >
                                 {/* Quote Icon */}
                                 <div className="absolute top-6 right-6 opacity-10">
-                                    <Quote className="w-16 h-16 text-blue-600 dark:text-[#64FFDA]" />
+                                    <Quote className="w-16 h-16" style={{ color: 'var(--primary)' }} />
                                 </div>
 
                                 {/* Rating */}
@@ -126,27 +136,28 @@ const Testimonials = () => {
                                 </div>
 
                                 {/* Content */}
-                                <p className="text-gray-700 dark:text-[#A8B2D1] mb-6 relative z-10 leading-relaxed text-sm md:text-base">
+                                <p className="mb-6 relative z-10 leading-relaxed text-sm md:text-base" style={{ color: 'var(--text)' }}>
                                     &ldquo;{t(testimonial.contentKey)}&rdquo;
                                 </p>
 
                                 {/* Author */}
-                                <div className="flex items-center gap-4 border-t border-gray-200 dark:border-[#1E3A5F] pt-6">
+                                <div className="flex items-center gap-4 border-t pt-6" style={{ borderTopColor: 'var(--border)' }}>
                                     <Image
                                         src={testimonial.avatar}
                                         alt={t(testimonial.nameKey)}
                                         width={56}
                                         height={56}
-                                        className="rounded-full border-2 border-blue-200 dark:border-[#64FFDA]/30 group-hover:border-blue-400 dark:group-hover:border-[#64FFDA] transition-colors duration-300"
+                                        style={{ borderColor: 'color-mix(in srgb, var(--primary) 30%, transparent)' }}
+                                        className="rounded-full border-2 group-hover:border-primary transition-colors duration-300"
                                     />
                                     <div>
-                                        <h4 className="font-semibold text-gray-900 dark:text-[#CCD6F6]">
+                                        <h4 className="font-semibold" style={{ color: 'var(--text-strong)' }}>
                                             {t(testimonial.nameKey)}
                                         </h4>
-                                        <p className="text-sm text-gray-600 dark:text-[#8892B0]">
+                                        <p className="text-sm" style={{ color: 'var(--muted)' }}>
                                             {t(testimonial.roleKey)}
                                         </p>
-                                        <p className="text-xs text-blue-600 dark:text-[#64FFDA] font-medium">
+                                        <p className="text-xs font-medium" style={{ color: 'var(--primary)' }}>
                                             {t(testimonial.companyKey)}
                                         </p>
                                     </div>
@@ -163,12 +174,16 @@ const Testimonials = () => {
                         {stats.map((stat, index) => (
                             <div
                                 key={index}
-                                className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#112240] dark:to-[#1E3A5F] rounded-xl border border-blue-100 dark:border-[#1E3A5F]"
+                                style={{
+                                    background: 'linear-gradient(to bottom right, color-mix(in srgb, var(--primary) 5%, transparent), color-mix(in srgb, var(--accent) 5%, transparent))',
+                                    borderColor: 'color-mix(in srgb, var(--primary) 20%, transparent)'
+                                }}
+                                className="text-center p-6 rounded-xl border"
                             >
-                                <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-[#64FFDA] mb-2">
+                                <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: 'var(--primary)' }}>
                                     {stat.value}
                                 </div>
-                                <div className="text-sm md:text-base text-gray-700 dark:text-[#8892B0]">
+                                <div className="text-sm md:text-base" style={{ color: 'var(--muted)' }}>
                                     {t(stat.labelKey)}
                                 </div>
                             </div>
@@ -177,10 +192,10 @@ const Testimonials = () => {
 
                     {/* CTA */}
                     <motion.div variants={fadeInUp} className="text-center">
-                        <p className="text-gray-700 dark:text-[#8892B0] mb-6 text-lg">
+                        <p className="mb-6 text-lg" style={{ color: 'var(--muted)' }}>
                             {t('testimonials.cta.text')}
                         </p>
-                        <button className="bg-blue-600 dark:bg-[#64FFDA] text-white dark:text-[#0A192F] px-8 py-3.5 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-[#52e0c4] transition-all">
+                        <button className="btn-primary px-8 py-3.5 rounded-lg font-semibold text-lg">
                             {t('testimonials.cta.button')}
                         </button>
                     </motion.div>

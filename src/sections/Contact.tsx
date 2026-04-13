@@ -1,10 +1,11 @@
+// src/sections/Contact.tsx
 'use client';
 
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { fadeInUp, staggerContainer, getInitialVariant } from '@/utils/animations';
+import { fadeInUp, staggerContainer } from '@/utils/animations';
 
 interface FormErrors {
     name?: string;
@@ -151,7 +152,7 @@ const Contact = () => {
     ];
 
     return (
-        <section id="contact" className="py-20 md:py-32 bg-gray-50 dark:bg-[#112240]">
+        <section id="contact" className="py-20 md:py-32" style={{ backgroundColor: 'var(--surface-2)' }}>
             <div className="container mx-auto px-4 sm:px-6">
                 <motion.div
                     initial={false}
@@ -159,48 +160,51 @@ const Contact = () => {
                     viewport={{ once: true, amount: 0.2 }}
                     variants={staggerContainer}
                 >
-                    {/* Cabeçalho */}
                     <div className="text-center mb-16 md:mb-20">
-                        <motion.h2 variants={fadeInUp} className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#CCD6F6]">
+                        <motion.h2 variants={fadeInUp} className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold" style={{ color: 'var(--text-strong)' }}>
                             {t('contact.title')}
                         </motion.h2>
-                        <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-700 dark:text-[#8892B0] max-w-2xl mx-auto">
+                        <motion.p variants={fadeInUp} className="text-lg md:text-xl max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
                             {t('contact.subtitle')}
                         </motion.p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-12">
-                        {/* Formulário */}
                         <motion.div
                             variants={fadeInUp}
-                            className="bg-white dark:bg-[#0A192F] p-6 md:p-8 lg:p-10 rounded-2xl border border-gray-200 dark:border-[#1E3A5F] shadow-lg"
+                            style={{
+                                backgroundColor: 'var(--surface)',
+                                borderColor: 'var(--border)'
+                            }}
+                            className="p-6 md:p-8 lg:p-10 rounded-2xl border shadow-lg"
                         >
                             {submitted ? (
                                 <div className="text-center py-12">
                                     <CheckCircle className="w-20 h-20 text-green-500 dark:text-emerald-400 mx-auto mb-6" />
-                                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-[#CCD6F6]">
+                                    <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--text-strong)' }}>
                                         {t('contact.form.success.title')}
                                     </h3>
-                                    <p className="text-gray-700 dark:text-[#8892B0] mb-6 text-lg">
+                                    <p className="mb-6 text-lg" style={{ color: 'var(--muted)' }}>
                                         {t('contact.form.success.message')}
                                     </p>
                                     <button
                                         onClick={() => setSubmitted(false)}
-                                        className="text-blue-600 dark:text-[#64FFDA] hover:text-blue-700 dark:hover:text-[#52e0c4] font-semibold text-lg transition-colors"
+                                        style={{ color: 'var(--primary)' }}
+                                        className="hover:opacity-70 font-semibold text-lg transition-opacity"
                                     >
                                         {t('contact.form.success.button')}
                                     </button>
                                 </div>
                             ) : (
                                 <>
-                                    <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-[#CCD6F6]">
+                                    <h3 className="text-2xl font-bold mb-8" style={{ color: 'var(--text-strong)' }}>
                                         {t('contact.form.title')}
                                     </h3>
                                     <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="grid md:grid-cols-2 gap-6">
                                             {/* Nome */}
                                             <div>
-                                                <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-[#CCD6F6]">
+                                                <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-strong)' }}>
                                                     {t('contact.form.name')} {t('contact.form.required')}
                                                 </label>
                                                 <input
@@ -208,11 +212,12 @@ const Contact = () => {
                                                     name="name"
                                                     value={formData.name}
                                                     onChange={handleChange}
-                                                    className={`w-full bg-gray-50 dark:bg-[#112240] border ${
-                                                        errors.name
-                                                            ? 'border-red-500 focus:border-red-500'
-                                                            : 'border-gray-300 dark:border-[#1E3A5F] focus:border-blue-500 dark:focus:border-[#64FFDA]'
-                                                    } rounded-lg px-4 py-3.5 focus:outline-none transition-colors text-gray-900 dark:text-[#CCD6F6] placeholder-gray-500 dark:placeholder-[#8892B0]`}
+                                                    style={{
+                                                        backgroundColor: 'var(--surface-2)',
+                                                        borderColor: errors.name ? '#ef4444' : 'var(--border)',
+                                                        color: 'var(--text)'
+                                                    }}
+                                                    className="w-full border rounded-lg px-4 py-3.5 focus:outline-none focus:border-primary transition-colors"
                                                     placeholder={t('contact.form.namePlaceholder')}
                                                 />
                                                 {errors.name && (
@@ -225,7 +230,7 @@ const Contact = () => {
 
                                             {/* Email */}
                                             <div>
-                                                <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-[#CCD6F6]">
+                                                <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-strong)' }}>
                                                     {t('contact.form.email')} {t('contact.form.required')}
                                                 </label>
                                                 <input
@@ -233,11 +238,12 @@ const Contact = () => {
                                                     name="email"
                                                     value={formData.email}
                                                     onChange={handleChange}
-                                                    className={`w-full bg-gray-50 dark:bg-[#112240] border ${
-                                                        errors.email
-                                                            ? 'border-red-500 focus:border-red-500'
-                                                            : 'border-gray-300 dark:border-[#1E3A5F] focus:border-blue-500 dark:focus:border-[#64FFDA]'
-                                                    } rounded-lg px-4 py-3.5 focus:outline-none transition-colors text-gray-900 dark:text-[#CCD6F6] placeholder-gray-500 dark:placeholder-[#8892B0]`}
+                                                    style={{
+                                                        backgroundColor: 'var(--surface-2)',
+                                                        borderColor: errors.email ? '#ef4444' : 'var(--border)',
+                                                        color: 'var(--text)'
+                                                    }}
+                                                    className="w-full border rounded-lg px-4 py-3.5 focus:outline-none focus:border-primary transition-colors"
                                                     placeholder={t('contact.form.emailPlaceholder')}
                                                 />
                                                 {errors.email && (
@@ -251,7 +257,7 @@ const Contact = () => {
 
                                         {/* Empresa */}
                                         <div>
-                                            <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-[#CCD6F6]">
+                                            <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-strong)' }}>
                                                 {t('contact.form.company')}
                                             </label>
                                             <input
@@ -259,29 +265,35 @@ const Contact = () => {
                                                 name="company"
                                                 value={formData.company}
                                                 onChange={handleChange}
-                                                className="w-full bg-gray-50 dark:bg-[#112240] border border-gray-300 dark:border-[#1E3A5F] rounded-lg px-4 py-3.5 focus:outline-none focus:border-blue-500 dark:focus:border-[#64FFDA] transition-colors text-gray-900 dark:text-[#CCD6F6] placeholder-gray-500 dark:placeholder-[#8892B0]"
+                                                style={{
+                                                    backgroundColor: 'var(--surface-2)',
+                                                    borderColor: 'var(--border)',
+                                                    color: 'var(--text)'
+                                                }}
+                                                className="w-full border rounded-lg px-4 py-3.5 focus:outline-none focus:border-primary transition-colors"
                                                 placeholder={t('contact.form.companyPlaceholder')}
                                             />
                                         </div>
 
                                         {/* Tipo de Projeto */}
                                         <div>
-                                            <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-[#CCD6F6]">
+                                            <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-strong)' }}>
                                                 {t('contact.form.projectType')} {t('contact.form.required')}
                                             </label>
                                             <select
                                                 name="projectType"
                                                 value={formData.projectType}
                                                 onChange={handleChange}
-                                                className={`w-full bg-gray-50 dark:bg-[#112240] border ${
-                                                    errors.projectType
-                                                        ? 'border-red-500 focus:border-red-500'
-                                                        : 'border-gray-300 dark:border-[#1E3A5F] focus:border-blue-500 dark:focus:border-[#64FFDA]'
-                                                } rounded-lg px-4 py-3.5 focus:outline-none transition-colors text-gray-900 dark:text-[#CCD6F6]`}
+                                                style={{
+                                                    backgroundColor: 'var(--surface-2)',
+                                                    borderColor: errors.projectType ? '#ef4444' : 'var(--border)',
+                                                    color: 'var(--text)'
+                                                }}
+                                                className="w-full border rounded-lg px-4 py-3.5 focus:outline-none focus:border-primary transition-colors"
                                             >
-                                                <option value="" className="bg-white dark:bg-[#112240]">{t('contact.form.projectTypePlaceholder')}</option>
+                                                <option value="">{t('contact.form.projectTypePlaceholder')}</option>
                                                 {projectTypes.map((type) => (
-                                                    <option key={type.value} value={type.value} className="bg-white dark:bg-[#112240]">
+                                                    <option key={type.value} value={type.value}>
                                                         {t(type.key)}
                                                     </option>
                                                 ))}
@@ -296,7 +308,7 @@ const Contact = () => {
 
                                         {/* Mensagem */}
                                         <div>
-                                            <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-[#CCD6F6]">
+                                            <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-strong)' }}>
                                                 {t('contact.form.message')} {t('contact.form.required')}
                                             </label>
                                             <textarea
@@ -304,11 +316,12 @@ const Contact = () => {
                                                 rows={5}
                                                 value={formData.message}
                                                 onChange={handleChange}
-                                                className={`w-full bg-gray-50 dark:bg-[#112240] border ${
-                                                    errors.message
-                                                        ? 'border-red-500 focus:border-red-500'
-                                                        : 'border-gray-300 dark:border-[#1E3A5F] focus:border-blue-500 dark:focus:border-[#64FFDA]'
-                                                } rounded-lg px-4 py-3.5 focus:outline-none transition-colors resize-none text-gray-900 dark:text-[#CCD6F6] placeholder-gray-500 dark:placeholder-[#8892B0]`}
+                                                style={{
+                                                    backgroundColor: 'var(--surface-2)',
+                                                    borderColor: errors.message ? '#ef4444' : 'var(--border)',
+                                                    color: 'var(--text)'
+                                                }}
+                                                className="w-full border rounded-lg px-4 py-3.5 focus:outline-none focus:border-primary transition-colors resize-none"
                                                 placeholder={t('contact.form.messagePlaceholder')}
                                             />
                                             {errors.message && (
@@ -317,7 +330,7 @@ const Contact = () => {
                                                     {errors.message}
                                                 </p>
                                             )}
-                                            <p className="mt-1 text-xs text-gray-500 dark:text-[#8892B0]">
+                                            <p className="mt-1 text-xs" style={{ color: 'var(--muted)' }}>
                                                 {formData.message.length} {t('contact.form.messageHint')}
                                             </p>
                                         </div>
@@ -325,11 +338,11 @@ const Contact = () => {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="w-full bg-blue-600 dark:bg-[#64FFDA] text-white dark:text-[#0A192F] py-3.5 rounded-lg font-semibold text-lg hover:bg-blue-700 dark:hover:bg-[#52e0c4] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                            className="btn-primary w-full py-3.5 rounded-lg font-semibold text-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             {isSubmitting ? (
                                                 <>
-                                                    <div className="w-5 h-5 border-2 border-white dark:border-[#0A192F] border-t-transparent rounded-full animate-spin" />
+                                                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                                                     {t('contact.form.submitting')}
                                                 </>
                                             ) : (
@@ -346,7 +359,7 @@ const Contact = () => {
 
                         {/* Informações de Contato */}
                         <motion.div variants={fadeInUp}>
-                            <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-[#CCD6F6]">
+                            <h3 className="text-2xl font-bold mb-8" style={{ color: 'var(--text-strong)' }}>
                                 {t('contact.methods.title')}
                             </h3>
 
@@ -354,21 +367,26 @@ const Contact = () => {
                                 {contactMethods.map((method, index) => (
                                     <div
                                         key={index}
-                                        className="flex items-start gap-4 p-4 rounded-xl bg-white dark:bg-[#0A192F] border border-gray-200 dark:border-[#1E3A5F] hover:border-blue-400 dark:hover:border-[#64FFDA] transition-colors duration-300"
+                                        style={{
+                                            backgroundColor: 'var(--surface)',
+                                            borderColor: 'var(--border)'
+                                        }}
+                                        className="flex items-start gap-4 p-4 rounded-xl border hover:border-primary transition-colors duration-300"
                                     >
-                                        <div className="w-12 h-12 bg-blue-100 dark:bg-[#1E3A5F] rounded-lg flex items-center justify-center text-blue-600 dark:text-[#64FFDA] flex-shrink-0">
+                                        <div className="icon-container w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                                             {method.icon}
                                         </div>
                                         <div>
-                                            <h4 className="font-semibold mb-1 text-gray-900 dark:text-[#CCD6F6]">
+                                            <h4 className="font-semibold mb-1" style={{ color: 'var(--text-strong)' }}>
                                                 {t(method.titleKey)}
                                             </h4>
-                                            <p className="text-gray-600 dark:text-[#8892B0] mb-2">
+                                            <p className="mb-2" style={{ color: 'var(--muted)' }}>
                                                 {method.detailsKey ? t(method.detailsKey) : method.details}
                                             </p>
                                             <a
                                                 href={method.href}
-                                                className="text-blue-600 dark:text-[#64FFDA] text-sm font-medium hover:text-blue-700 dark:hover:text-[#52e0c4] transition-colors"
+                                                style={{ color: 'var(--primary)' }}
+                                                className="text-sm font-medium hover:opacity-70 transition-opacity"
                                             >
                                                 {t(method.actionKey)} →
                                             </a>
@@ -378,20 +396,21 @@ const Contact = () => {
                             </div>
 
                             {/* FAQ Rápido */}
-                            <div className="border-t border-gray-200 dark:border-[#1E3A5F] pt-8">
-                                <h4 className="font-semibold mb-4 text-lg text-gray-900 dark:text-[#CCD6F6]">
+                            <div className="border-t pt-8" style={{ borderTopColor: 'var(--border)' }}>
+                                <h4 className="font-semibold mb-4 text-lg" style={{ color: 'var(--text-strong)' }}>
                                     {t('contact.faq.title')}
                                 </h4>
                                 <div className="space-y-4">
                                     {faqs.map((faq, index) => (
                                         <div
                                             key={index}
-                                            className="border-b border-gray-200 dark:border-[#1E3A5F] pb-4 last:border-0"
+                                            className="border-b pb-4 last:border-0"
+                                            style={{ borderBottomColor: 'var(--border)' }}
                                         >
-                                            <p className="font-medium mb-1 text-gray-900 dark:text-[#CCD6F6]">
+                                            <p className="font-medium mb-1" style={{ color: 'var(--text-strong)' }}>
                                                 {t(faq.questionKey)}
                                             </p>
-                                            <p className="text-sm text-gray-600 dark:text-[#8892B0]">
+                                            <p className="text-sm" style={{ color: 'var(--muted)' }}>
                                                 {t(faq.answerKey)}
                                             </p>
                                         </div>

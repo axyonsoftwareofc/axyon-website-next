@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 @import "tailwindcss";
 
 /* ===========================================
@@ -8,32 +7,55 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ===========================================
-   CSS VARIABLES - Cores do Axyon
+   🎨 AXYON BRAND COLORS - Consistente em ambos os temas
    =========================================== */
 
 :root {
-  /* Light Mode */
-  --color-light-bg: #F8FAFC;
-  --color-light-surface: #FFFFFF;
-  --color-light-text: #1E293B;
-  --color-light-muted: #64748B;
+  /* 🔵 Brand Principal (IMUTÁVEL nos 2 temas) */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
 
-  /* Dark Mode - Axyon Brand Colors */
-  --color-primary: #0A192F;
-  --color-primary-light: #112240;
-  --color-primary-lighter: #1E3A5F;
-  --color-secondary: #64FFDA;
-  --color-accent: #8892B0;
-  --color-muted: #A8B2D1;
-  --color-light: #CCD6F6;
+  /* ⚡ Accent Ciano (IMUTÁVEL nos 2 temas) */
+  --accent: #22D3EE;
+  --accent-hover: #06B6D4;
 
-  /* Accent Colors */
-  --color-cyan: #64FFDA;
-  --color-blue: #3B82F6;
+  /* 🌊 Navy (para elementos especiais) */
+  --navy: #071B2E;
+
+  /* 🌈 Gradiente Oficial Axyon */
+  --gradient: linear-gradient(135deg, #2563EB 0%, #22D3EE 100%);
 }
 
 /* ===========================================
-   BASE STYLES - Previne Flash de Tema
+   ☀️ LIGHT MODE - Neutros
+   =========================================== */
+
+:root:not(.dark) {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-2: #F1F5F9;
+  --border: #E2E8F0;
+  --text-strong: #0F172A;
+  --text: #334155;
+  --muted: #64748B;
+}
+
+/* ===========================================
+   🌙 DARK MODE - Neutros (Navy profundo)
+   =========================================== */
+
+:root.dark {
+  --bg: #061427;
+  --surface: #0B1F3A;
+  --surface-2: #0E2A4A;
+  --border: #173455;
+  --text-strong: #EAF2FF;
+  --text: #C7D6F3;
+  --muted: #8FA7C9;
+}
+
+/* ===========================================
+   🎯 BASE STYLES - Previne Flash de Tema
    =========================================== */
 
 html {
@@ -41,29 +63,21 @@ html {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F8FAFC;
-}
-
-html.dark {
-  background-color: #0A192F;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 body {
-  background-color: #F8FAFC;
-  color: #1E293B;
+  background-color: var(--bg);
+  color: var(--text);
   transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
 
-html.dark body {
-  background-color: #0A192F;
-  color: #CCD6F6;
-}
-
 /* ===========================================
-   CONTAINER - Layout centralizado
+   📦 CONTAINER - Layout centralizado
    =========================================== */
 
 .container {
@@ -91,7 +105,7 @@ html.dark body {
 }
 
 /* ===========================================
-   SCROLLBAR CUSTOMIZADA
+   📜 SCROLLBAR CUSTOMIZADA
    =========================================== */
 
 ::-webkit-scrollbar {
@@ -99,65 +113,49 @@ html.dark body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-html.dark ::-webkit-scrollbar-track {
-  background: #0A192F;
+  background: var(--surface-2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--border);
   border-radius: 5px;
 }
 
-html.dark ::-webkit-scrollbar-thumb {
-  background: #1E3A5F;
-}
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #2d4a6f;
+  background: var(--muted);
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 #f1f5f9;
-}
-
-html.dark * {
-  scrollbar-color: #1E3A5F #0A192F;
+  scrollbar-color: var(--border) var(--surface-2);
 }
 
 /* ===========================================
-   SELEÇÃO DE TEXTO
+   ✨ SELEÇÃO DE TEXTO
    =========================================== */
 
 ::selection {
-  background-color: #3B82F6;
+  background-color: var(--primary);
   color: white;
 }
 
-html.dark ::selection {
-  background-color: #64FFDA;
-  color: #0A192F;
+:root.dark ::selection {
+  background-color: var(--accent);
+  color: var(--navy);
 }
 
 /* ===========================================
-   FOCUS VISIBLE (Acessibilidade)
+   ♿ FOCUS VISIBLE (Acessibilidade)
    =========================================== */
 
 :focus-visible {
-  outline: 2px solid #3B82F6;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-html.dark :focus-visible {
-  outline-color: #64FFDA;
+:root.dark :focus-visible {
+  outline-color: var(--accent);
 }
 
 :focus:not(:focus-visible) {
@@ -165,7 +163,7 @@ html.dark :focus-visible {
 }
 
 /* ===========================================
-   SUPORTE A REDUCED MOTION
+   🎬 SUPORTE A REDUCED MOTION
    =========================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -180,46 +178,128 @@ html.dark :focus-visible {
 }
 
 /* ===========================================
-   GRADIENT TEXT
+   🌈 GRADIENT TEXT (SEMPRE AZUL→CIANO)
    =========================================== */
 
 .gradient-text {
-  background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-html.dark .gradient-text {
-  background: linear-gradient(135deg, #64FFDA 0%, #3B82F6 100%);
+  background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ===========================================
-   GLOW EFFECTS
+   ✨ GLOW EFFECTS (sutis)
    =========================================== */
 
-.glow-cyan {
-  box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+.glow-primary {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
-.glow-blue {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+.glow-accent {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
 /* ===========================================
-   SECTION STYLES
+   📐 SECTION STYLES
    =========================================== */
 
 section {
   position: relative;
   overflow: hidden;
+  will-change: transform, opacity;
 }
 
 /* ===========================================
-   RESET EXTRAS
+   🃏 CARD UTILITIES
+   =========================================== */
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px -10px color-mix(in srgb, var(--primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* ===========================================
+   🔘 BUTTON UTILITIES (SEMPRE AZUL)
+   =========================================== */
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--primary);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+:root.dark .btn-secondary {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+:root.dark .btn-secondary:hover {
+  background: var(--accent);
+  color: var(--navy);
+}
+
+/* ===========================================
+   🎨 ÍCONE CONTAINER (fundo azul transparente)
+   =========================================== */
+
+.icon-container {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+:root.dark .icon-container {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: var(--accent);
+}
+
+.icon-container:hover {
+  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  transform: scale(1.05);
+}
+
+/* ===========================================
+   🔄 RESET EXTRAS
    =========================================== */
 
 *, *::before, *::after {
@@ -231,97 +311,4 @@ section {
   margin: 0 auto;
   padding: 0;
   text-align: left;
-}
-
-/* ===========================================
-   CARD UTILITIES
-   =========================================== */
-
-.card {
-  background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-html.dark .card {
-  background-color: #112240;
-  border-color: #1E3A5F;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
-}
-
-html.dark .card:hover {
-  box-shadow: 0 10px 40px -10px rgba(100, 255, 218, 0.1);
-}
-
-/* ===========================================
-   BUTTON UTILITIES
-   =========================================== */
-
-.btn-primary {
-  background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-}
-
-html.dark .btn-primary {
-  background: linear-gradient(135deg, #64FFDA 0%, #3B82F6 100%);
-  color: #0A192F;
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #3B82F6;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: 2px solid #3B82F6;
-  cursor: pointer;
-}
-
-.btn-secondary:hover {
-  background: #3B82F6;
-  color: white;
-}
-
-html.dark .btn-secondary {
-  color: #64FFDA;
-  border-color: #64FFDA;
-}
-
-html.dark .btn-secondary:hover {
-  background: #64FFDA;
-  color: #0A192F;
-}
-
-/* Otimizar animações */
-section {
-  position: relative;
-  overflow: hidden;
-  will-change: transform, opacity; /* ← Adicione */
-}
-
-.card {
-  background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  will-change: transform; /* ← Adicione */
 }
